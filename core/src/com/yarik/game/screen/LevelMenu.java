@@ -31,7 +31,7 @@ public class LevelMenu implements Screen {
 
     @Override
     public void resize(int width, int height) {
-
+        stage.getViewport().update(width,height);
     }
 
     @Override
@@ -42,6 +42,7 @@ public class LevelMenu implements Screen {
         skin = new Skin(Gdx.files.internal("ui/menuSkin.json"),atlas);
 
         table = new Table(skin);
+        table.setBounds(0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 
         list = new List(skin);
         list.setItems(new String[]{"one","two","three"});
@@ -51,9 +52,15 @@ public class LevelMenu implements Screen {
         back = new TextButton("BACK",skin);
         back.pad(10);
 
-
         scrollPane = new ScrollPane(list,skin);
-        table.add("SELECT LEVEL");
+
+        table.add().width(table.getWidth() / 3);
+        table.add("SELECT LEVEL").width(table.getWidth()/3);
+        table.add().width(table.getWidth()/3).row();
+        table.add(scrollPane);
+        table.add(play);
+        table.add(back);
+        stage.addActor(table);
     }
 
     @Override

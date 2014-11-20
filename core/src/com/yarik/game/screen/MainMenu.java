@@ -52,14 +52,14 @@ public class MainMenu implements Screen {
     public void show() {
         stage = new Stage();
         Gdx.input.setInputProcessor(stage);
-        atlas = new TextureAtlas(Gdx.files.internal("ui/button.pack"));
+        atlas = new TextureAtlas(Gdx.files.internal("ui/atlas.pack"));
         skin = new Skin(Gdx.files.internal("ui/menuSkin.json"),atlas);
         table = new Table(skin);
         table.setBounds(0,0,Gdx.graphics.getWidth(),Gdx.graphics.getHeight());
 
         //creating buttons
         buttonExit = new TextButton("EXIT",skin);
-        buttonExit.pad(20);
+        buttonExit.pad(5);
         buttonExit.addListener(new ClickListener(){
             @Override
             public void clicked(InputEvent event, float x, float y) {
@@ -68,7 +68,7 @@ public class MainMenu implements Screen {
         });
 
         buttonPlay = new TextButton("PLAY",skin);
-        buttonPlay.pad(20);
+        buttonPlay.pad(5);
         buttonPlay.addListener(new ClickListener(){
             @Override
             public void clicked(InputEvent event, float x, float y) {
@@ -78,7 +78,7 @@ public class MainMenu implements Screen {
 
 
         heading = new Label(SOTGame.TITLE,skin);
-        heading.setFontScale(0.5f);
+        heading.setFontScale(0.7f);
         table.add(heading);
         table.getCell(heading).spaceBottom(100);
         table.row();
@@ -86,7 +86,7 @@ public class MainMenu implements Screen {
         table.getCell(buttonPlay).spaceBottom(10);
         table.row();
         table.add(buttonExit);
-        table.debug();
+        //table.debug();
         stage.addActor(table);
 
         // creating animation
